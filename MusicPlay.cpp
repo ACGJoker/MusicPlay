@@ -101,7 +101,7 @@ DWORD CMusicPlay::GetTotalTime()
 {
 	MCI_STATUS_PARMS mciStatusParms;
 	mciStatusParms.dwItem = MCI_STATUS_LENGTH; 
-	mciSendCommand(m_wDeviceID, MCI_STATUS, MCI_WAIT | MCI_STATUS_ITEM, (DWORD)(LPVOID)&mciStatusParms);
+	mciSendCommand(m_wDeviceID, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&mciStatusParms);
 	return mciStatusParms.dwReturn;
 }
 
@@ -109,7 +109,7 @@ DWORD CMusicPlay::GetTimePostion()
 {
 	MCI_STATUS_PARMS mciStatusParms;
 	mciStatusParms.dwItem = MCI_STATUS_POSITION;
-	mciSendCommand(m_wDeviceID, MCI_STATUS, MCI_NOTIFY | MCI_STATUS_ITEM, (DWORD)(LPVOID)&mciStatusParms);//关键,取得位置
+	mciSendCommand(m_wDeviceID, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&mciStatusParms);//关键,取得位置
 	return mciStatusParms.dwReturn;
 }
 
