@@ -9,6 +9,7 @@
 
 #pragma once
 #include "mmsystem.h"
+#include <Digitalv.h>
 #pragma comment(lib,"winmm.lib")
 using namespace std;
 
@@ -134,12 +135,31 @@ public:
 	****************************************************************************/
 	void PlayFrom(DWORD dwTime);
 
+	/****************************************************************************
+	| 函数功能：获取音量值                                                      |
+	| 输入参数：无                                                              |
+	| 输出参数：无                                                              |
+	| 返回值：  音量值                                                          |
+	| 说    明：音量分为0-100                                                   |
+	****************************************************************************/
+	DWORD GetVolumn();
+
+	/****************************************************************************
+	| 函数功能：设置音量                                                        |
+	| 输入参数：音量值                                                          |
+	| 输出参数：无                                                              |
+	| 返回值：  成功：TRUE   失败：FLASE                                        |
+	| 说    明：音量分为0-100                                                   |
+	****************************************************************************/
+	BOOL SetVolumn(DWORD dwVol);
+
 private:
 	enum { PLAY = 0, PAUSE, STOP } m_fStatus;
 	MCIERROR	mciError;
 	WORD		m_wDeviceID;
 	CString		m_strCurMusicPath;
 	HWND		m_hNotifyWindow;
+	DWORD		m_dwVolumn;
 
 };
 
